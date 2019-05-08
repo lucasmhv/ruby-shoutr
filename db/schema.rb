@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_08_172220) do
+ActiveRecord::Schema.define(version: 2019_05_08_193333) do
+
+  create_table "following_relationships", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followed_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_user_id"], name: "index_following_relationships_on_followed_user_id"
+    t.index ["follower_id", "followed_user_id"], name: "relationship_index"
+    t.index ["follower_id"], name: "index_following_relationships_on_follower_id"
+  end
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
