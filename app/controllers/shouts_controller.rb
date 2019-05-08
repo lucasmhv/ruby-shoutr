@@ -23,7 +23,7 @@ class ShoutsController < ApplicationController
   end
 
   def text_shout_content_params
-    params.require(:shout).require(:content).permit(:body)
+    params.require(:shout).require(:content).permit(:body)  
   end
 
   def photo_shout_content_params
