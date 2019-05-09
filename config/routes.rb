@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  
   constraints Clearance::Constraints::SignedIn.new do
     root to: "dashboards#show"
   end
 
   root to: "homes#show"
-
   post "text_shouts" => "shouts#create", defaults: { content_type: TextShout }
   post "photo_shouts" => "shouts#create", defaults: { content_type: PhotoShout }
 
@@ -15,9 +15,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :hashtags, only: [:show]
-  
+  resources :hashtags, only: [:show]  
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
+
   resource :session, only: [:create]
 
   resources :users, only: [:create, :show] do
