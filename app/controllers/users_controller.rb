@@ -2,6 +2,7 @@ class UsersController < Clearance::UsersController
 
   def new
     @user = User.new
+    UserMailer.with(user: @user).welcome_email.deliver_now
   end
 
   def show
